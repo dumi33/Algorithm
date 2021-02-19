@@ -5,4 +5,6 @@ using namespace std;
 int main()
 {
     printf("Hello World!");
+    int a;
+    cin >>a ;
 }
