@@ -4,7 +4,11 @@ using namespace std;
 
 int main()
 {
-    printf("Hello World!");
-    int a;
-    cin >>a ;
+    int n;
+    cin >> n;
+    while (n--) {
+        int x;
+        cin >> x;
+        cout << x << endl; 
+    }
 }
