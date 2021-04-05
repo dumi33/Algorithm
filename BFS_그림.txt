@@ -1,0 +1,49 @@
+#include<iostream>
+#include<algorithm>
+#include<queue>
+#define X first
+#define Y second
+
+int dx[4] = { 0,1,0,-1 };
+int dy[4] = { 1,0,-1,0 };
+bool vis[501][501];
+int board[501][501];
+int n, m;
+using namespace std;
+int main() {
+    cin >> n >> m;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> board[i][j];
+        }
+    }
+    int mx = 0; //최대 넓이
+    int cnt = 0; //개수
+    for (int i = 0; i < n; i++) { //이중for문을 돌며 전체 보드를 확인한다.
+        for (int j = 0; j < m; j++) {
+            if (vis[i][j] || board[i][j] != 1) continue;
+            cnt++; //그림의 개수 ++
+            queue < pair<int, int>> Q;
+            Q.push({ i,j });
+            vis[i][j] = 1;
+            int area = 0;
+            while (!Q.empty()) {
+                pair<int, int> cur = Q.front();
+                Q.pop();
+                 area++; //pop하는 개수 세기
+                for (int dir = 0; dir < 4; dir++) {
+                    int nx = cur.X + dx[dir];
+                    int ny = cur.Y + dy[dir];
+                    if (vis[nx][ny] || board[nx][ny] != 1) continue;
+                    if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
+                   
+                    vis[nx][ny] = 1;
+                    Q.push({ nx,ny });
+                }
+               
+            }
+            mx = max(mx, area);
+        }
+    }
+    cout << cnt << "\n" << mx;
+}
