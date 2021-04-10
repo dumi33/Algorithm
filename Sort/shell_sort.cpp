@@ -3,9 +3,9 @@ using namespace std;
 int arr[] = { 343,64,3,5,2,23,4,5 };
 void insertion(int *arr, int first, int last, int gap) {
     int key, i,j;
-    for (i = first + gap; i <= last; i += gap) {
+    for (i = first + gap; i <last; i += gap) {
         key = arr[i];
-        for ( j = i - gap; first <= j ; j -= gap) {
+        for ( j = i - gap;  j >= first; j -= gap) {
             if (key < arr[j]) {
                 arr[j + gap] = arr[j];
             }
@@ -21,11 +21,11 @@ void insertion(int *arr, int first, int last, int gap) {
 void shell_sort(int *arr, int n) {
     int i, gap;
     for (gap = n / 2; gap > 0; gap = gap / 2) {
-        if (gap % 2 == 0) { //È¦¼ö°¡ ÁÁÀº°¡º¸´Ù//Â¦¼öÀÏ¶§´Â +1;
+        if (gap % 2 == 0) { //í™€ìˆ˜ê°€ ì¢‹ì€ê°€ë³´ë‹¤//ì§ìˆ˜ì¼ë•ŒëŠ” +1;
             gap++;
         }
         for (i = 0; i < gap; i++) {
-            insertion(arr, i, n - 1, gap);
+            insertion(arr, i, n , gap);
         }
     }
 }
