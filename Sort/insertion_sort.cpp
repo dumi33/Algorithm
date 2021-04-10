@@ -4,10 +4,10 @@ using namespace std;
 int arr[] = { 24,51,1,42,23 };
 int key, j;
 void insertion(int* arr, int size) {
-	for (int i = 1; i < size; i++) { //size -1 ¸¸Å­ µ¹¸é¼­
+	for (int i = 1; i < size; i++) { //0ë²ˆì§¸ ì›ì†ŒëŠ” ì •ë ¬ë˜ì—ˆë‹¤ê³  ê°€ì • //size -1 ë§Œí¼ ëŒë©´ì„œ
 		key = arr[i];
 		for (j = i - 1; j >= 0; j--) {
-			if (arr[j] > key) arr[j + 1] = arr[j]; //Å« ¼ö¸¦ ³ªÇÑÅ× µ¤´Â´Ù.
+			if (arr[j] > key) arr[j + 1] = arr[j]; //í° ìˆ˜ë¥¼ ë‚˜í•œí…Œ ë®ëŠ”ë‹¤.
 			else break;
 		}
 		arr[j + 1] = key;
