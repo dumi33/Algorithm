@@ -36,7 +36,7 @@ int main() {
             }
         }
     }
-    for (int i = 0; i < n; i++) fill(vis[i], vis[i] + n, 0);
+    
     for (int i = 0; i < n; i++) { //G의 경우
         for (int j = 0; j < n; j++) {
             if (board[i][j] != 'G' || vis[i][j] == 1) continue;
@@ -57,7 +57,7 @@ int main() {
             }
         }
     }
-    for (int i = 0; i < n; i++) fill(vis[i], vis[i] + n, 0);
+   
     for (int i = 0; i < n; i++) { //B의 경우
         for (int j = 0; j < n; j++) {
             if (board[i][j] != 'B' || vis[i][j] == 1) continue;
@@ -101,7 +101,7 @@ int main() {
             }
         }
     }
-    for (int i = 0; i < n; i++) fill(vis[i], vis[i] + n, 0);
+   
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (vis[i][j] || board[i][j] != 'B') continue;
