@@ -13,12 +13,11 @@ void func(int k) {
         return;
     }
     for (int i = 0; i < n; i++) {
-        
-        if (!isu[i]) {
-            isu[i] = 1;
+        if (!isu[use[i]]) {
             arr[k] = use[i];
+            isu[use[i]] = 1;
             func(k + 1);
-            isu[i] = 0;
+            isu[use[i]] = 0;
         }
     }
  }
