@@ -1,0 +1,19 @@
+#include<iostream>
+#include<cstring>
+#define mod 10007
+using namespace std;
+int dp[1001][1001];
+
+int func(int n, int k) {
+    int& ret = dp[n][k];
+    if (k == 0 || k == n) return 1;
+    if (ret != -1) return ret;
+
+    return ret = ((func(n - 1, k - 1) + func(n - 1, k))) % mod;
+}
+int main() {
+    int n, k;
+    cin >> n >> k;
+    memset(dp, -1, sizeof(dp));
+    cout << func(n, k);
+}
