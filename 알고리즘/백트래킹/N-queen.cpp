@@ -1,31 +1,34 @@
 #include<iostream>
 using namespace std;
-int n;
-int queen_loc[15];//퀸의 위치저장배열
-//queen_loc[3]=2 라면 3행 2열에 퀸이 있다.
-int cnt;
-bool check(int row) { //여기에 놓아도 되니?
-     //입력받은 행까지 탐색
-    //같은 열, 대각선에 퀸이 있으면 0을 반환
-    for (int i = 0; i < row; i++) {
-        if (queen_loc[row] == queen_loc[i] || (row - i == abs(queen_loc[row] - queen_loc[i]))) {
-            return 0;
-        }
-    }
-    return 1;
+int col[16], cross1[30], cross2[30];//15*2-1 = 29이므로 약 30
+int cnt, n;
+
+bool check(int r, int c) { // 놓을 수 있는 자리인가
+	if (col[c] || cross1[r + c] || cross2[r - c + n - 1]) return false;
+	return true;
 }
-void nqueen(int row) { // row에 놓아보겠다.
-    if (row == n) cnt++;  //마지막행까지 왔다면
-    else {
-        for (int col = 0; col < n; col++) { //모든 열에 대해서
-            queen_loc[row] = col;
-            if (check(row)) nqueen(row + 1);
-        }
-    }
+
+void queen(int row) { //row 행에 퀸 놓을 자리 찾기 
+	if (row == n) {// 방법 하나 발견!
+		cnt++;
+		return;
+	}
+	for (int i = 0; i < n; i++) {
+		if (check(row, i)) {
+			col[i] = 1;
+			cross1[row + i] = 1;
+			cross2[row - i + n - 1] = 1;
+			queen(row + 1);
+			col[i] = 0;
+			cross1[row + i] = 0;
+			cross2[row - i + n - 1] = 0;
+		}
+	}
 }
+
 int main() {
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-    cin >> n;
-    nqueen(0); // 0행에 퀸을 놓아보겠다.
-    cout << cnt;
+	ios_base::sync_with_stdio(0); cin.tie(0);
+	cin >> n;
+	queen(0); // 1행에 놓을 자리 찾기
+	cout << cnt;
 }
