@@ -1,6 +1,6 @@
 n = int(input())
 m = int(input())
-graph = [[]*n for i in range(n+1)] # 이차원 리스트 생성
+graph = [[]*(n-1) for i in range(n+1)] # 이차원 리스트 생성
 for i in range(m):
     a,b = map(int,input().split()) 
     graph[a].append(b)
