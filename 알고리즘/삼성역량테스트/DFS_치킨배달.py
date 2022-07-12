@@ -3,7 +3,7 @@ mp =  [list(map(int,input().split())) for i in range (n)]
 
 hs = []
 ch = []
-cb = [0]*m # 조합 
+cb = [0]*m # 조합 # 선택할 치킨집의 인덱스를 담은 배열 (combination)
 res = int(1e9)
 
 
