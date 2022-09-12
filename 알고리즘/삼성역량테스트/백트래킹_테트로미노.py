@@ -4,6 +4,7 @@ dy = [1,-1,0,0]
 
 def dfs(i,j,cnt,sum) :
     global ans 
+    # 시간낭비를 줄이기 위해서 
     if ans >= sum + max_v*(3-cnt) : return 
     if cnt == 3 :
         ans = max(ans,sum)
@@ -12,6 +13,7 @@ def dfs(i,j,cnt,sum) :
         for dir in range(4) :
             nx,ny = i + dx[dir], j + dy[dir]
             if 0<=nx<n and 0<=ny<m and check[nx][ny] ==0 :
+                # 'ㅗ'모양을 위해서 
                 if cnt ==1 :
                     check[nx][ny] = 1 
                     dfs(i,j,cnt+1, sum+mp[nx][ny])
